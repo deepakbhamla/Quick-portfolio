@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Alankar Shukla | Portfolio</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Alankar Shukla Machine Learning Data Science Deepa learning python freelancer intern" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        
+        <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'css/slick-theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            button, input {
+               overflow: visible;
+               width: 90%;
+            }
+            textarea {
+               overflow: auto;
+                resize: vertical;
+                width: 90%;
+                height: 120px;
+                }
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="51">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <img src="{{ profile.profile_image1.url }}" alt="no Image">
+                </div>
+                <div class="sidebar-content">
+                    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                        <a href="#" class="navbar-brand">Navigation</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#header">Home<i class="fa fa-home"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#about">About<i class="fa fa-address-card"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#portfolio">Portfolio<i class="fa fa-file-archive"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">Contact<i class="fa fa-envelope"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="sidebar-footer">
+                    <a href="{{contact.instagram }}"><i class="fab fa-instagram"></i></a>
+                    <a href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="{{contact.github}}"><i class="fab fa-github"></i></a>
+
+                </div>
+            </div>
+            <div class="content">
+                <!-- Header Start -->
+                <div class="header" id="header">
+                    <div class="content-inner">
+                        <p>I'm</p>
+                        <h1>{{profile.first_name}} {{profile.last_name}}</h1>
+                        <h2></h2>
+                        <div class="typed-text">{{profile.Bio}}</div>
+                    </div>
+                </div>
+                <!-- Header End -->
+                
+                <!-- Large Button Start -->
+                <div class="large-btn">
+                    <div class="content-inner">
+                        <a class="btn" href="{{profile.resume}}"><i class="fa fa-download"></i>Resume</a>
+                        <a class="btn" id='forms'><i class="fa fa-hands-helping"></i>Hire Me</a>
+                    </div>
+                </div>
+                <!-- Large Button End -->
+                
+                <!-- About Start -->
+                <div class="about" id="about">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>About Me</h2>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="{{ profile.profile_image2.url }}" style='width:75%' alt="Image">
+                            </div>
+                            <div class="col-md-6 col-lg-7">
+                                <p>{{profile.about_me}} </p>
+                                <a class="btn" href="#">Hire Me</a>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if skills %}
+                            <div class="col-md-12" style="display: flex; flex-wrap: wrap;">
+                                {% for data in skills %}
+                                <div class="skills col-md-6">
+                                    
+                                    <div class="skill-name">
+                                        <p>{{data.skill_name}}</p><p>{{data.skill_percentage}}</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div  class="progress-bar" role="progressbar" aria-valuenow="{{data.skill_percentage}}" aria-valuemin="0" aria-valuemax="100" ></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% else%}
+                            <p class="text-center mt-5 text-dark">No Skills</p>
+                         {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                  
+                <!-- Portfolio Start -->
+                <div class="portfolio" id="portfolio">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Portfolio</h2>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-lg-12">
+                                <ul id="portfolio-flters">
+                                    <li data-filter="*" class="filter-active">All</li>
+                                    <li data-filter=".web-des">Data Science</li>
+                                    <li data-filter=".web-dev">Machine lEarning</li>
+                                    <li data-filter=".dig-mar">Marketing</li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="row portfolio-container">
+                            {% if projects %}
+                            {% for item in projects %}
+                            <div class="col-lg-4 col-md-6 portfolio-item web-des">
+                                <div class="portfolio-wrap">
+                                    <figure>
+                                        <img src="{{item.project_scrnshot.url}}" class="img-fluid" alt="">
+                                        <a href="{{item.project_scrnshot.url}}" data-lightbox="portfolio" data-title="Project Name" class="link-preview" title="Preview"><i class="fa fa-eye"></i></a>
+
+
+                                        <a href="{{item.project_link}}" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
+                                        <a class="portfolio-title" href="#">{{item.project_name}} <span>{{item.project_category}}</span></a>
+                                    </figure>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                              <div class="div col-12">
+                                  <p class="text-center text-dark">no projects yet</p>
+                              </div>
+                            {% endif %}
+
+                       
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Start -->
+                
+                      
+                <!-- Contact Start -->
+                <div class="contact" id="contact">
+                    <div class="content-inner">
+                        <div class="content-header">
+                            <h2>Contact</h2>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <p><i class="fa fa-user"></i>{{profile.first_name}}{{profile.last_name}}</p>
+                                    <p><i class="fa fa-tag"></i>{{profile.Bio}}</p>
+                                    <p><i class="fa fa-envelope"></i><a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
+                                    <p><i class="fa fa-phone"></i><a href="tel:+91{{contact.phone}}">+91 {{contact.phone}} </a></p>
+                                    <p><i class="fa fa-map-marker"></i>{{contact.address}}</p>
+                                    <div class="social">
+                                        <a class="btn" href="{{contact.instagram}}"><i class="fab fa-instagram"></i></a>
+                                        <a class="btn" href="{{contact.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                                        <a class="btn" href="{{contact.github}}"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='#forms' class="col-md-6">
+                                <div class="form">
+                                    <form role="form" action="" method="post">
+                                        <div class="form-row">
+                                            {% csrf_token %}
+                                            <div class="form-group col-12">
+                                                {{form.contact_name}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{form.contact_email}}
+                                        </div>
+                                        <div class="form-group">
+                                            {{form.content}}
+                                        </div>
+                                        <div>
+                                            <button class="btn" type="submit">Send Message</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact End -->
+                
+                <!-- Footer Start -->
+                <div class="footer">
+                    <div class="content-inner">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Start -->
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+        <script src="{% static 'css/easing/easing.min.js' %}"></script>
+        <script src="{% static 'css/slick/slick.min.js' %}"></script>
+        <script src="{% static 'css/typed/typed.min.js' %}"></script>
+        <script src="{% static 'css/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'css/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'css/lightbox/js/lightbox.min.js' %}"></script>
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
