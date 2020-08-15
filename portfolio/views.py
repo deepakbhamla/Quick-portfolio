@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Profile, Project, Contact, SkillLevel
+from .models import Profile, Project, Contact, SkillLevel, Blog
 from .forms import ContactForm
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
@@ -9,10 +9,11 @@ from django.template.loader import get_template
 # Create your views here.
 def Home(request):
     form_class = ContactForm
-    profile = Profile.objects.all()[0]
-    contact = Contact.objects.all()[0]
+    profile = Profile.objects.first()
+    contact = Contact.objects.first()
     projects = Project.objects.all()
     skills = SkillLevel.objects.all()
+    blogs = Blog.objects.all()
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
@@ -46,4 +47,4 @@ def Home(request):
             
             return redirect('home')
 
-    return render(request, 'portfolio/index.html',{'profile': profile,'contact':contact,'skills':skills,'projects':projects,'form': form_class})
+    return render(request, 'portfolio/index.html',{'profile': profile,'contact':contact,'skills':skills,'projects':projects,'form': form_class, 'blogs': blogs})

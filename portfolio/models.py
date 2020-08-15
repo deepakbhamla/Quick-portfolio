@@ -36,9 +36,19 @@ class Project(models.Model):
     def __str__(self):
        return self.project_name
 
+class Blog(models.Model):
+    blog_name = models.CharField(max_length=99);
+    blog_category = models.CharField(max_length=99);
+    blog_link =  models.URLField(max_length=200);
+    blog_scrnshot = models.ImageField(upload_to = 'media')
+    date = models.DateTimeField('default date time', default = datetime.now())
+
+    def __str__(self):
+       return self.blog_name
+
 class SkillLevel(models.Model):
     skill_name = models.CharField(max_length=99);
-    skill_percentage = models.IntegerField(max_length=99);
+    skill_percentage = models.IntegerField();
 
     def __str__(self):
        return self.skill_name

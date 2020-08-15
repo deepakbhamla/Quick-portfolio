@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Project, Contact, SkillLevel
+from .models import Profile, Project, Contact, SkillLevel,Blog
 # Register your models here.
 admin.site.site_header = 'The Alankar Shukla'
 admin.site.site_title = 'my personal portfolio '
@@ -9,3 +9,4 @@ admin.site.register(Profile)
 admin.site.register(Project)
 admin.site.register(Contact)
 admin.site.register(SkillLevel)
+admin.site.register(Blog)

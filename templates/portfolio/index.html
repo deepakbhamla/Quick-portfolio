@@ -24,7 +24,11 @@
 
         <!-- Template Stylesheet -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
         <style>
+            body{
+                font-family: 'Assistant', sans-serif;
+            }
             button, input {
                overflow: visible;
                width: 90%;
@@ -42,7 +46,7 @@
         <div class="wrapper">
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <img src="{{ profile.profile_image1.url }}" alt="no Image">
+                    <img src="{{ profile.profile_image1.url }}" alt="no Image" >
                 </div>
                 <div class="sidebar-content">
                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -59,8 +63,12 @@
                                     <a class="nav-link" href="#about">About<i class="fa fa-address-card"></i></a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="#blog">Blog<i class="fa fa-file-archive"></i></a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="#portfolio">Portfolio<i class="fa fa-file-archive"></i></a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="#contact">Contact<i class="fa fa-envelope"></i></a>
                                 </li>
@@ -91,7 +99,7 @@
                 <div class="large-btn">
                     <div class="content-inner">
                         <a class="btn" href="{{profile.resume}}"><i class="fa fa-download"></i>Resume</a>
-                        <a class="btn" id='forms'><i class="fa fa-hands-helping"></i>Hire Me</a>
+                        <a class="btn" href='#form'><i class="fa fa-hands-helping"></i>Hire Me</a>
                     </div>
                 </div>
                 <!-- Large Button End -->
@@ -135,6 +143,36 @@
                     </div>
                 </div>
             </div>
+            <div class="portfolio" id="portfolio">
+                <div class="content-inner">
+                    <div class="content-header">
+                        <h2>Blogs</h2>
+                    </div>
+                    <div class="row portfolio-container">
+                        {% if blogs %}
+                        {% for item in blogs %}
+                        <div class="col-lg-4 col-md-6 portfolio-item web-des">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="{{item.blog_scrnshot.url}}" class="img-fluid" alt="">
+
+                                    <a style="text-align:center;right:50%;left:40%" href="{{item.blog_link}}" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
+                                    <a class="portfolio-title" href="#">{{item.blog_name}} <span>{{item.project_category}}</span></a>
+                                </figure>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                          <div class="div col-12">
+                              <p class="text-center text-dark">no Blog yet</p>
+                          </div>
+                        {% endif %}
+
+                   
+                    </div>
+                </div>
+            </div>
+
                   
                 <!-- Portfolio Start -->
                 <div class="portfolio" id="portfolio">
@@ -142,16 +180,6 @@
                         <div class="content-header">
                             <h2>Portfolio</h2>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-lg-12">
-                                <ul id="portfolio-flters">
-                                    <li data-filter="*" class="filter-active">All</li>
-                                    <li data-filter=".web-des">Data Science</li>
-                                    <li data-filter=".web-dev">Machine lEarning</li>
-                                    <li data-filter=".dig-mar">Marketing</li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="row portfolio-container">
                             {% if projects %}
                             {% for item in projects %}
@@ -159,10 +187,9 @@
                                 <div class="portfolio-wrap">
                                     <figure>
                                         <img src="{{item.project_scrnshot.url}}" class="img-fluid" alt="">
-                                        <a href="{{item.project_scrnshot.url}}" data-lightbox="portfolio" data-title="Project Name" class="link-preview" title="Preview"><i class="fa fa-eye"></i></a>
 
 
-                                        <a href="{{item.project_link}}" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
+                                        <a style="text-align:center;right:50%;left:40%" href="{{item.project_link}}" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
                                         <a class="portfolio-title" href="#">{{item.project_name}} <span>{{item.project_category}}</span></a>
                                     </figure>
                                 </div>
@@ -202,7 +229,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id='#forms' class="col-md-6">
+                            <div id='form' class="col-md-6">
                                 <div class="form">
                                     <form role="form" action="" method="post">
                                         <div class="form-row">
